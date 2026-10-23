@@ -538,7 +538,7 @@ function createMovieCard(movie, index = 0) {
     const playBtn = card.querySelector('.movie-card-play');
     if (playBtn) {
         playBtn.addEventListener('click', function(e) {
-            gtag('event', '');
+            gtag('event', 'play-btn-clicked');
             e.stopPropagation();
             watchMovie(movie.id);
         });
