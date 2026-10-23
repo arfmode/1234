@@ -529,6 +529,7 @@ function createMovieCard(movie, index = 0) {
     const favBtn = card.querySelector('.fav-btn');
     if (favBtn) {
         favBtn.addEventListener('click', function(e) {
+            gtag('event', '');
             e.stopPropagation();
             toggleFavorite(movie.id);
         });
@@ -537,6 +538,7 @@ function createMovieCard(movie, index = 0) {
     const playBtn = card.querySelector('.movie-card-play');
     if (playBtn) {
         playBtn.addEventListener('click', function(e) {
+            gtag('event', '');
             e.stopPropagation();
             watchMovie(movie.id);
         });
@@ -804,6 +806,7 @@ function setupNavigation() {
     if (!elements.navLinks) return;
     elements.navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function(e) {
+            gtag('event', '');
             elements.navLinks.classList.remove('mobile-active');
             const href = link.getAttribute('href');
             if (link.id === 'favoritesLink') {
@@ -832,6 +835,7 @@ function setupEventListeners() {
 
     if (elements.menuToggle) {
         elements.menuToggle.addEventListener('click', function(e) {
+            gtag('event', '');
             e.stopPropagation();
             elements.navLinks.classList.toggle('mobile-active');
         });
@@ -840,11 +844,13 @@ function setupEventListeners() {
 
     if (elements.searchInput) {
         elements.searchInput.addEventListener('input', function(e) {
+            gtag('event', '');
             currentFilter.search = e.target.value;
             visibleMoviesCount = 8;
             applyFiltersAndSearch();
         });
         elements.searchInput.addEventListener('keydown', function(e) {
+            gtag('event', '');
             if (e.key === 'Enter') {
                 currentFilter.search = elements.searchInput.value;
                 visibleMoviesCount = 8;
@@ -854,6 +860,7 @@ function setupEventListeners() {
     }
     if (elements.searchBtn) {
         elements.searchBtn.addEventListener('click', function() {
+            gtag('event', '');
             currentFilter.search = elements.searchInput.value;
             visibleMoviesCount = 8;
             applyFiltersAndSearch();
@@ -862,6 +869,7 @@ function setupEventListeners() {
 
     if (elements.genreFilter) {
         elements.genreFilter.addEventListener('change', function(e) {
+            gtag('event', '');
             currentFilter.genre = e.target.value;
             visibleMoviesCount = 8;
             applyFiltersAndSearch();
@@ -869,6 +877,7 @@ function setupEventListeners() {
     }
     if (elements.yearFilter) {
         elements.yearFilter.addEventListener('change', function(e) {
+            gtag('event', '');
             currentFilter.year = e.target.value;
             visibleMoviesCount = 8;
             applyFiltersAndSearch();
@@ -876,6 +885,7 @@ function setupEventListeners() {
     }
     if (elements.ratingFilter) {
         elements.ratingFilter.addEventListener('change', function(e) {
+            gtag('event', '');
             currentFilter.rating = e.target.value;
             visibleMoviesCount = 8;
             applyFiltersAndSearch();
@@ -883,6 +893,7 @@ function setupEventListeners() {
     }
     if (elements.typeFilter) {
         elements.typeFilter.addEventListener('change', function(e) {
+            gtag('event', '');
             currentFilter.type = e.target.value;
             visibleMoviesCount = 8;
             applyFiltersAndSearch();
@@ -890,6 +901,7 @@ function setupEventListeners() {
     }
     if (elements.sortBy) {
         elements.sortBy.addEventListener('change', function(e) {
+            gtag('event', '');
             currentFilter.sort = e.target.value;
             applyFiltersAndSearch();
         });
@@ -897,6 +909,7 @@ function setupEventListeners() {
 
     if (elements.showMoreBtn) {
         elements.showMoreBtn.addEventListener('click', function() {
+            gtag('event', '');
             visibleMoviesCount += MOVIES_PER_PAGE;
             applyFiltersAndSearch();
         });
@@ -907,6 +920,7 @@ function setupEventListeners() {
 
     if (elements.modalFavBtn) {
         elements.modalFavBtn.addEventListener('click', function() {
+            gtag('event', '');
             if (currentModalMovieId !== null) toggleFavorite(currentModalMovieId);
         });
     }
@@ -916,6 +930,7 @@ function setupEventListeners() {
     }
     if (elements.trailerBtn) {
         elements.trailerBtn.addEventListener('click', function() {
+            gtag('event', '');
             if (currentModalMovieId !== null) watchMovie(currentModalMovieId);
         });
     }
@@ -939,6 +954,7 @@ function setupEventListeners() {
 
     if (elements.reviewForm) {
         elements.reviewForm.addEventListener('submit', function(e) {
+            gtag('event', '');
             e.preventDefault();
             const name = elements.reviewUserName.value.trim();
             const rating = elements.reviewRating.value;
@@ -961,17 +977,20 @@ function setupEventListeners() {
     });
 
     window.addEventListener('scroll', function() {
+        gtag('event', '');
         if (!elements.backToTop) return;
         if (window.scrollY > 300) elements.backToTop.classList.add('show');
         else elements.backToTop.classList.remove('show');
     });
     if (elements.backToTop) {
         elements.backToTop.addEventListener('click', function() {
+            gtag('event', '');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
     document.addEventListener('click', function(e) {
+        gtag('event', '');
         if (!e.target.closest('.nav-links') && !e.target.closest('.menu-toggle')) {
             if (elements.navLinks) elements.navLinks.classList.remove('mobile-active');
         }
